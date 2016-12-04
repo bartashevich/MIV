@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIV", "MIV\MIV.csproj", "{43506DA0-A836-49E2-B4EE-D57926EF444F}"
+EndProject
+Project("{471EC4BB-E47E-4229-A789-D1F5F83B52D4}") = "MIVBoot", "MIV\MIVBoot.Cosmos", "{3A32C240-9C78-4A48-8D41-CF56D82AC19C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43506DA0-A836-49E2-B4EE-D57926EF444F}.Debug|x86.ActiveCfg = Debug|x86
+		{43506DA0-A836-49E2-B4EE-D57926EF444F}.Debug|x86.Build.0 = Debug|x86
+		{43506DA0-A836-49E2-B4EE-D57926EF444F}.Release|x86.ActiveCfg = Release|x86
+		{43506DA0-A836-49E2-B4EE-D57926EF444F}.Release|x86.Build.0 = Release|x86
+		{3A32C240-9C78-4A48-8D41-CF56D82AC19C}.Debug|x86.ActiveCfg = Debug|x86
+		{3A32C240-9C78-4A48-8D41-CF56D82AC19C}.Debug|x86.Build.0 = Debug|x86
+		{3A32C240-9C78-4A48-8D41-CF56D82AC19C}.Release|x86.ActiveCfg = Debug|x86
+		{3A32C240-9C78-4A48-8D41-CF56D82AC19C}.Release|x86.Build.0 = Debug|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
