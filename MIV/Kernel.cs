@@ -1,10 +1,13 @@
 ﻿using System;
+using System.IO;
 using Sys = Cosmos.System;
 
 namespace MIV
 {
     public class Kernel : Sys.Kernel
     {
+        private static Sys.FileSystem.CosmosVFS FS;
+
         public void printMIVStartScreen()
         {
             Console.Clear();
@@ -268,16 +271,40 @@ namespace MIV
 
         protected override void BeforeRun()
         {
-
+            FS = new Sys.FileSystem.CosmosVFS(); Sys.FileSystem.VFS.VFSManager.RegisterVFS(FS); FS.Initialize();
+            if (File.Exists(@"0:\file.txt"))
+            {
+                Console.WriteLine("Found file!");
+            }
+            else
+            {
+                Console.WriteLine("Creating file!");
+                File.Create(@"0:\file.txt");
+            }
         }
 
         protected override void Run()
         {
-            String x = miv(null);
+            String text = String.Empty;
+            Console.WriteLine("Do you want to open file.txt content? (Yes/No)");
+            if (Console.ReadLine() == "Yes")
+            {
+                text = miv(File.ReadAllText(@"0:\file.txt"));
+            }
+            else
+            {
+                text = miv(null);
+            }
+
             Console.Clear();
-            Console.WriteLine(x);
-            Console.WriteLine("--- Press any key to write again! ---");
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+            if(text != null)
+            {
+                File.WriteAllText(@"0:\file.txt", text);
+                Console.WriteLine("Content has been saved to file.txt!");
+            }
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
         }
     }
 }
