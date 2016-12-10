@@ -270,13 +270,34 @@ namespace MIV
         {
             for (int i = 0; i < time; i++) ;
         }
-        public static void StartMIV(string filename)
+        public static void StartMIV()
         {
+            Console.WriteLine("Enter file's filename to open:");
+            Console.WriteLine("If the specified file does not exist, it will be created.");
+            Kernel.file = Console.ReadLine();
+            try
+            {
+                if (File.Exists(@"0:\" + Kernel.file))
+                {
+                    Console.WriteLine("Found file!");
+                }
+                else if (!File.Exists(@"0:\" + Kernel.file))
+                {
+                    Console.WriteLine("Creating file!");
+                    File.Create(@"0:\" + Kernel.file);
+                }
+                Console.Clear();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             String text = String.Empty;
-            Console.WriteLine("Do you want to open " + filename + " content? (Yes/No)");
+            Console.WriteLine("Do you want to open " + Kernel.file+ " content? (Yes/No)");
             if (Console.ReadLine().ToLower() == "yes" || Console.ReadLine().ToLower() == "y")
             {
-                text = miv(File.ReadAllText(@"0:\" + filename));
+                text = miv(File.ReadAllText(@"0:\" + Kernel.file));
             }
             else
             {
@@ -287,8 +308,8 @@ namespace MIV
 
             if (text != null)
             {
-                File.WriteAllText(@"0:\" + filename, text);
-                Console.WriteLine("Content has been saved to " + filename);
+                File.WriteAllText(@"0:\" + Kernel.file, text);
+                Console.WriteLine("Content has been saved to " + Kernel.file);
             }
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey(true);
